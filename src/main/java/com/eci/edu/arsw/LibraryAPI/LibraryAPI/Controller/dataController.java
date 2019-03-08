@@ -61,8 +61,8 @@ public class dataController {
     }
     
     @GetMapping("/{idlibrarie}/books")
-    public ResponseEntity<Librarie> getBooksLibrarie(@PathVariable Long idlibrarie) {
-        Librarie lib = ds.getLibrarie(idlibrarie.intValue());
+    public ResponseEntity<List> getBooksLibrarie(@PathVariable Long idlibrarie) {
+        List<Book> = ds.getLibrarie(idlibrarie.intValue()).getBooksMap();
 
         HttpStatus status = HttpStatus.ACCEPTED;
 
@@ -97,23 +97,6 @@ public class dataController {
             return new ResponseEntity<>("Error: " + ex, HttpStatus.BAD_REQUEST);
         }
     }
-    
-//    @PutMapping()
-//    public ResponseEntity<?> putAddProductOrder(@RequestBody Librarie li) {
-//        try {
-//            Librarie original = ds.getLibrarie(li.getID());
-//            
-//            for (String book : li.getBooksMap()) {
-//                original.addBook(0, b)
-//        //(dish, orderProducts.getDishOrderedAmount(dish));
-//            }
-//            
-//            return new ResponseEntity<>(HttpStatus.OK);
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            return new ResponseEntity<>("Error: " + ex, HttpStatus.BAD_REQUEST);
-//        }
-//    }
 
     @DeleteMapping("/{idlibrarie}")
     public ResponseEntity<?> deleteProductOrder(@PathVariable Long idlibrarie) {

@@ -6,6 +6,7 @@
 package com.eci.edu.arsw.LibraryAPI.LibraryAPI.Model;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  *
@@ -25,6 +26,7 @@ public class Librarie {
         this.name = name;
         this.address = address;
         this.telephone = telephone;
+        this.booksMap = new ConcurrentHashMap<>();
     }
 
     public Map<Integer, Book> getBooksMap() {
@@ -75,6 +77,5 @@ public class Librarie {
         this.telephone = telephone;
     }
    
-    
     
 }
