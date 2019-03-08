@@ -61,17 +61,15 @@ public class dataController {
     }
     
     @GetMapping("/{idlibrarie}/books")
-    public ResponseEntity<List> getBooksLibrarie(@PathVariable Long idlibrarie) {
-        List<Book> = ds.getLibrarie(idlibrarie.intValue()).getBooksMap();
-
-        HttpStatus status = HttpStatus.ACCEPTED;
-
-        if (lib == null) {
-            status = HttpStatus.NOT_FOUND;
+    public ResponseEntity<List> getSpecificBook(@PathVariable Long idlibrarie) {
+        List<Book> bs = new ArrayList<>();
+        for (Book b : ds.getBooksOfLibrarie(idlibrarie.intValue())) {
+            int idbook = b.getID();
+            bs.add(ds.getSpecificBook(idlibrarie.intValue(),idbook));
         }
-
-        return new ResponseEntity<Librarie>(lib, status);
+        return new ResponseEntity<List>(bs, HttpStatus.ACCEPTED);
     }
+    
     
     @GetMapping("/{idlibrarie}/books/{idbook}")
     public ResponseEntity<Book> getSpecificBook(@PathVariable Long idlibrarie,@PathVariable Long idbook ) {
